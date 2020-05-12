@@ -1,0 +1,37 @@
+#!/bin/bash
+
+platforms=("xilinx/aws-vu9p-f1/dynamic_5.0" "xilinx/aws-vu9p-f1-04261818/dynamic_5.0" "xilinx/u200/xdma_201830.2" "xilinx/u250/xdma_201830.2" "xilinx/u280/xdma_201920.3")
+PS3="Please select a platform [1-"${#platforms[@]}"]: "
+select platform in ${platforms[@]}
+do
+	case ${platform} in
+		"xilinx/aws-vu9p-f1/dynamic_5.0")
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/xilinx/vitis/quantitativeFinance/blackScholes/1.1/4calculator
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/xilinx/vitis/quantitativeFinance/monteCarlo/1.0/1Calibration_1PreSample_1Pricing1
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/xilinx/vitis/vision/2.0/4stereoBM
+			break
+			;;
+		"xilinx/aws-vu9p-f1-04261818/dynamic_5.0")
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1-04261818/dynamic_5.0/com/xilinx/vitis/quantitativeFinance/blackScholes/1.1/4calculator
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1-04261818/dynamic_5.0/com/xilinx/vitis/quantitativeFinance/monteCarlo/1.0/1Calibration_1PreSample_1Pricing1
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1-04261818/dynamic_5.0/com/xilinx/vitis/vision/2.0/4stereoBM
+			break
+			;;
+		"xilinx/u200/xdma_201830.2")
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u200/xdma_201830.2/com/xilinx/vitis/quantitativeFinance/blackScholes/1.0/1calculator
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u200/xdma_201830.2/com/xilinx/vitis/quantitativeFinance/monteCarlo/1.0/1Calibration_1PreSample_1Pricing1
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u200/xdma_201830.2/com/xilinx/vitis/vision/1.0/1stereoBM
+			break
+			;;
+		"xilinx/u250/xdma_201830.2")
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/xdma_201830.2/com/xilinx/vitis/quantitativeFinance/monteCarlo/1.0/1Calibration_1PreSample_1Pricing1_1Pricing2
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/xdma_201830.2/com/xilinx/vitis/vision/1.0/1stereoBM
+			break
+			;;
+		"xilinx/u280/xdma_201920.3")
+			inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u280/xdma_201920.3/com/xilinx/vitis/vision/1.0/1stereoBM
+			break
+			;;
+		*) echo "invalid platform id ${REPLY}";;
+	esac
+done

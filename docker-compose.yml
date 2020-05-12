@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  jupyterhub:
+    build: .
+    image: inaccel/jupyterhub:dev
+    container_name: jupyterhub-dev
+    environment:
+      - CORAL_CLIENT=1
+      - CORAL_HOSTNAME=inaccel-coral
+    ports:
+      - 8000:8000
+    volumes:
+      - admin:/home/admin/labs
+      - parml01:/home/parml01/labs
+      - parml02:/home/parml02/labs
+      - parml03:/home/parml03/labs
+      - parml04:/home/parml04/labs
+      - parml05:/home/parml05/labs
+      - parml06:/home/parml06/labs
+      - parml07:/home/parml07/labs
+      - parml08:/home/parml08/labs
+      - /opt/xilinx/xrt:/opt/xilinx/xrt
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: inaccel
+
+volumes:
+  parml01:
+    name: parml01
+  parml02:
+    name: parml02
+  parml03:
+    name: parml03
+  parml04:
+    name: parml04
+  parml05:
+    name: parml05
+  parml06:
+    name: parml06
+  parml07:
+    name: parml07
+  parml08:
+    name: parml08
+  admin:
+    name: admin
